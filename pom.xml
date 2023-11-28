@@ -13,7 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>emailVerificationPractice</name>
 	<description>Practicing Email Verification</description>
-	<packaging>war</packaging>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -75,10 +74,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.4.0</version>
-			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
