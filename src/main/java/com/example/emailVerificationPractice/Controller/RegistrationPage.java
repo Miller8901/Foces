@@ -6,7 +6,7 @@ import com.example.emailVerificationPractice.Service.ApiServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "https://focourse.com")
+//@CrossOrigin(origins = "https://focourse.com")
 @RequestMapping("/registration")
 @RestController
 public class RegistrationPage {

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "https://focourse.com")
+//@CrossOrigin(origins = "https://focourse.com")
 @RequestMapping("/studentspage")
 @RestController
 public class StudentPage {
