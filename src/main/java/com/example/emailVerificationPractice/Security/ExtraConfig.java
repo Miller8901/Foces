@@ -25,17 +25,6 @@ public class ExtraConfig implements WebMvcConfigurer {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("https://focourse.com") // Add your allowed origin(s)
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("Content-Type", "Authorization")
-                .allowCredentials(true);
-    }
-
-
-
 
     @Bean
     public ApiUser apiUser() {
