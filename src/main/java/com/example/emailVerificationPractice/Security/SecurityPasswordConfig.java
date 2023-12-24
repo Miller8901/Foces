@@ -32,7 +32,7 @@ public class SecurityPasswordConfig extends WebSecurityConfigurerAdapter {
 
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/focourse/login");
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+//        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
                 http.csrf().disable();
                 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
