@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Configuration
-public class ExtraConfig {
+public class ExtraConfig implements WebMvcConfigurer {
 
     private final ApiUserRepository apiUserRepository;
     private final PasswordEncoder passwordEncoder;
@@ -21,6 +23,15 @@ public class ExtraConfig {
     public ExtraConfig(ApiUserRepository apiUserRepository, PasswordEncoder passwordEncoder) {
         this.apiUserRepository = apiUserRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("https://focourse.com") // Add your allowed origin(s)
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("Content-Type", "Authorization")
+                .allowCredentials(true);
     }
 
 
