@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin(origins = {"https://focourse.com", "https://focourse.pages.dev/", "https://focourse.vercel.app", "http://localhost:3000" })
+@CrossOrigin(origins = "https://focourse.pages.dev")
 @RequestMapping("/adminpage")
 @RestController
 public class AdminPage {
