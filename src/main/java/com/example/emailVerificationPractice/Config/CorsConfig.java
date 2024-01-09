@@ -31,7 +31,10 @@ public class CorsConfig {
         configuration.setAllowedMethods(allowedMethods);
         configuration.setAllowedHeaders(allowedHeaders);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", configuration);
+        source.registerCorsConfiguration("/registration/**", configuration);
+        source.registerCorsConfiguration("/adminpage/**", configuration);
+        source.registerCorsConfiguration("/studentspage/**", configuration);
+        source.registerCorsConfiguration("/news/**", configuration);
         return source;
     }
 }
