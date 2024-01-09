@@ -8,11 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 @Repository
 public interface NewsRepository  extends JpaRepository<News,Long> {
-    News findByheadName(String headname);
-    void deleteByheadName(String headname);
+    News findByHeadName(String headname);
+    News findByNewsUniqueId(String newsUniqueId);
+    void deleteByHeadName(String headname);
 
     @Query("SELECT s FROM News s WHERE s.headName = ?1")
-    Optional<News> findOptionheadName(String headname);
+    Optional<News> findOptionHeadName(String headname);
 
 
 
