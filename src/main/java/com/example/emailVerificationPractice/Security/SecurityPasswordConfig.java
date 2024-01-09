@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,7 +38,7 @@ public class SecurityPasswordConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
-        customAuthenticationFilter.setFilterProcessesUrl("/focourse/login");
+        customAuthenticationFilter.setFilterProcessesUrl("/fo/login");
 //        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
                 http.csrf().disable();
@@ -47,7 +48,7 @@ public class SecurityPasswordConfig extends WebSecurityConfigurerAdapter {
                 http.authorizeRequests().anyRequest().authenticated();
                 http.addFilter(customAuthenticationFilter);
                 http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
-                http.cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()));
+                http.cors(Customizer.withDefaults());
     }
 
     @Override
