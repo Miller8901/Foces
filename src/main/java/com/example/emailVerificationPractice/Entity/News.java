@@ -24,8 +24,9 @@ public class News {
     )
 
     private Long id;
+    private String newsUniqueId;
     private String headName;
-    private String about;
+    private String author;
     private String article;
 
 
