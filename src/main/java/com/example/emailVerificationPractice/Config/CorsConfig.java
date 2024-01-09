@@ -6,35 +6,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
 @Configuration
-public class CorsConfig {
+public class CorsConfig implements WebMvcConfigurer {
 
-    @Value("#{'${cors.allowed-origins}'.split(',')}")
-    private List<String> allowedOrigins;
-
-    @Value("#{'${cors.allowed-methods}'.split(',')}")
-    private List<String> allowedMethods;
-
-    @Value("#{'${cors.allowed-headers}'.split(',')}")
-    private List<String> allowedHeaders;
-
-    @Value("#{'${cors.exposed-headers}'.split(',')}")
-    private List<String> expectedHeaders;
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource(){
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(allowedOrigins);
-        configuration.setAllowedMethods(allowedMethods);
-        configuration.setAllowedHeaders(allowedHeaders);
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/registration/**", configuration);
-        source.registerCorsConfiguration("/adminpage/**", configuration);
-        source.registerCorsConfiguration("/studentspage/**", configuration);
-        source.registerCorsConfiguration("/news/**", configuration);
-        return source;
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .exposedHeaders("Access-Control-Allow-Origin")
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 }
